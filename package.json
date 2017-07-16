@@ -1,0 +1,12 @@
+{
+  "name": "dragonsofmugloar-solution",
+  "version": "1.0.0",
+  "description": "My attempt at a solution",
+  "main": "index.js",
+  "author": "Tim Haase",
+  "license": "WTFPL",
+  "dependencies": {
+    "axios": "~0.16.2",
+    "xml2js": "~0.4.17"
+  }
+}
