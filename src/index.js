@@ -45,7 +45,10 @@ function batchOfBattles() {
       console.log('Total number of battles: ' + totalNumberOfBattles);
       console.log('Win ratio: ' + (battlesWon / totalNumberOfBattles * 100).toFixed(2) + '%');
       console.log('\n############################################\n');
-      setTimeout(batchOfBattles, 2500);
+
+      if (totalNumberOfBattles < 1000) {
+        setTimeout(batchOfBattles, 2500);
+      }
     });
 }
 

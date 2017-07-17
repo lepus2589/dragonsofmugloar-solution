@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "My attempt at a solution",
   "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --opts ./mocha.opts"
+  },
   "author": "Tim Haase",
   "license": "WTFPL",
   "dependencies": {
     "axios": "~0.16.2",
+    "chai": "~4.1.0",
+    "mocha": "~3.4.2",
     "xml2js": "~0.4.17"
   }
 }

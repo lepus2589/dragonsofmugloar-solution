@@ -12,7 +12,7 @@ class Knight {
       aAgility <= 10 &&
       typeof aEndurance === 'number' &&
       aEndurance <= 10 &&
-      aAttack + aArmor + aAgility + aEndurance <= 20;
+      aAttack + aArmor + aAgility + aEndurance === 20;
   }
 
   constructor(...aParameters) {
