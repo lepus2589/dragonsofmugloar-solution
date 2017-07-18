@@ -1,11 +1,11 @@
 'use strict';
 
-const {Knight} = require('./knight');
+const models = require('.');
 
 class Battle {
   _isValid(aGameId, aKnight) {
     return typeof aGameId === 'number' &&
-      aKnight instanceof Knight;
+      aKnight instanceof models.Knight;
   }
 
   constructor(...aParameters) {
@@ -14,7 +14,7 @@ class Battle {
     if (aParameters.length === 1 && typeof aParameters[0] === 'object') {
       const battle = aParameters[0];
       gameId = battle.gameId;
-      knight = new Knight(battle.knight);
+      knight = new models.Knight(battle.knight);
     } else {
       [gameId, knight] = aParameters;
     }
