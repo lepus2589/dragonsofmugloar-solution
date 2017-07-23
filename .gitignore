@@ -1,4 +1,6 @@
 .*
 !.gitignore
+!.nycrc
 
 node_modules
+coverage

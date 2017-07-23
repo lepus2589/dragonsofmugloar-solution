@@ -4,14 +4,21 @@
   "description": "My attempt at a solution",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --opts ./mocha.opts"
+    "test": "nyc mocha --opts ./mocha.opts"
   },
   "author": "Tim Haase",
   "license": "WTFPL",
   "dependencies": {
     "axios": "~0.16.2",
-    "chai": "~4.1.0",
-    "mocha": "~3.4.2",
     "xml2js": "~0.4.17"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "~1.9.0",
+    "chai": "~4.1.0",
+    "chai-as-promised": "~7.1.1",
+    "mocha": "~3.4.2",
+    "nyc": "~11.0.3",
+    "sinon": "~2.3.8",
+    "sinon-chai": "~2.12.0"
   }
 }

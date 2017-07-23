@@ -1,14 +1,14 @@
 'use strict';
 
 const axios = require('axios');
-const {Attack, Outcome} = require('../models');
+const models = require('../models');
 
 async function attack(aGameId, aAttack) {
   if (typeof aGameId !== 'number') {
     throw new Error('Invalid gameId.');
   }
 
-  if (!(aAttack instanceof Attack)) {
+  if (!(aAttack instanceof models.Attack)) {
     throw new Error('Invalid attack payload.');
   }
 
@@ -19,7 +19,7 @@ async function attack(aGameId, aAttack) {
     data: aAttack
   });
 
-  return new Outcome(response.data);;
+  return new models.Outcome(response.data);
 }
 
 module.exports.attack = attack;
