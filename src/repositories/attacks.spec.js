@@ -38,14 +38,14 @@ describe('attacks repository: ', function () {
       this.axiosMock.onAny().reply(expect.fail);
 
       return expect(attacks.attack(undefined, attackModel))
-        .to.eventually.rejectedWith('Invalid gameId.');
+        .to.eventually.be.rejectedWith('Invalid gameId.');
     });
 
     it('should fail without a valid Attack model', function () {
       this.axiosMock.onAny().reply(expect.fail);
 
       return expect(attacks.attack(gameId, {}))
-        .to.eventually.rejectedWith('Invalid attack payload.');
+        .to.eventually.be.rejectedWith('Invalid attack payload.');
     });
 
     it('should succeed with a valid gameId and Attack model', function () {

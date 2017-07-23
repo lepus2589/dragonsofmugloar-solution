@@ -1,7 +1,7 @@
 'use strict';
 
 const axios = require('axios');
-const {parseString} = require('xml2js');
+const xml2js = require('xml2js');
 
 async function get(aGameId) {
   if (typeof aGameId !== 'number') {
@@ -15,7 +15,7 @@ async function get(aGameId) {
   });
 
   return new Promise((aResolve, aReject) => {
-    parseString(response.data, {explicitArray: false}, (aError, aResult) => {
+    xml2js.parseString(response.data, {explicitArray: false}, (aError, aResult) => {
       if (aError) {
         aReject(aError);
       } else {

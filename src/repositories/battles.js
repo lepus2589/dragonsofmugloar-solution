@@ -1,7 +1,7 @@
 'use strict';
 
 const axios = require('axios');
-const {Battle} = require('../models');
+const models = require('../models');
 
 async function start() {
   const response = await axios({
@@ -10,7 +10,7 @@ async function start() {
     responseType: 'json'
   });
 
-  return new Battle(response.data);
+  return new models.Battle(response.data);
 }
 
 async function get(aGameId) {
@@ -24,7 +24,7 @@ async function get(aGameId) {
     responseType: 'json'
   });
 
-  return new Battle(response.data);
+  return new models.Battle(response.data);
 }
 
 module.exports.start = start;
