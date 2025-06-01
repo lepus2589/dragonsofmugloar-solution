@@ -1,5 +1,3 @@
-'use strict';
-
 class Knight {
   _isValid(aName, aAttack, aArmor, aAgility, aEndurance) {
     return typeof aName === 'string' &&
@@ -41,4 +39,4 @@ class Knight {
   }
 }
 
-module.exports.Knight = Knight;
+export {Knight};

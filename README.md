@@ -1,4 +1,4 @@
-# My [dragonsofmugloar.com](http://www.dragonsofmugloar.com/) solution #
+# My [dragonsofmugloar.com](http://www.dragonsofmugloar.com/) API v1 solution #
 
 This is my attempt at a solution to the challenge. To try it out yourself,
 simply do

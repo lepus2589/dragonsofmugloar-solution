@@ -1,7 +1,5 @@
-'use strict';
-
-const axios = require('axios');
-const models = require('../models');
+import axios from 'axios';
+import * as models from '../models/index.js';
 
 async function attack(aGameId, aAttack) {
   if (typeof aGameId !== 'number') {
@@ -14,7 +12,7 @@ async function attack(aGameId, aAttack) {
 
   const response = await axios({
     method: 'put',
-    url: 'http://www.dragonsofmugloar.com/api/game/' + aGameId + '/solution',
+    url: 'https://www.dragonsofmugloar.com/api/game/' + aGameId + '/solution',
     responseType: 'json',
     data: aAttack
   });
@@ -22,4 +20,4 @@ async function attack(aGameId, aAttack) {
   return new models.Outcome(response.data);
 }
 
-module.exports.attack = attack;
+export {attack};

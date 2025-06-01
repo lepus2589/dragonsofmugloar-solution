@@ -1,3 +1,1 @@
-'use strict';
-
-require('./src/index');
+import './src/index.js';

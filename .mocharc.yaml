@@ -1,0 +1,7 @@
+recursive: false
+reporter: 'spec'
+require:
+  - './test/setup.js'
+spec:
+  - 'src/**/*.spec.js'
+ui: 'bdd'

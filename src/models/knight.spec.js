@@ -1,6 +1,4 @@
-'use strict';
-
-const {Knight} = require('./knight');
+import {Knight} from './knight.js';
 
 describe('Knight model: ', function () {
   describe('The valid Knight model', function () {

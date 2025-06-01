@@ -1,24 +1,29 @@
-'use strict';
+import sinon from 'sinon';
+import esmock from 'esmock'
 
-const {Attack} = require('./attack');
-const models = require('.');
+describe('Attack model: ', async function () {
+  const Dragon = sinon.fake(function (aDragon) {
+    if (aDragon.invalid) {
+      throw new Error();
+    }
+  });
+  const {Attack} = await esmock('./attack.js', {
+    './index.js': { Dragon }
+  });
 
-models.Dragon = function (aDragon) {
-  if (aDragon.invalid) {
-    throw new Error();
-  }
-};
+  afterEach(function () {
+    Dragon.resetHistory();
+  });
 
-describe('Attack model: ', function () {
   describe('The valid Attack model', function () {
     let attack;
 
     beforeEach(function () {
-      attack = new Attack(new models.Dragon({}));
+      attack = new Attack(new Dragon({}));
     });
 
     it('should have a property "dragon" that is instance of Dragon', function () {
-      expect(attack.dragon).to.be.an.instanceof(models.Dragon);
+      expect(attack.dragon).to.be.an.instanceof(Dragon);
     });
   });
 
@@ -28,7 +33,7 @@ describe('Attack model: ', function () {
     }
 
     it('should work if separate arguments are provided', function () {
-      expect(createAttack.bind(this, new models.Dragon({}))).not.to.throw();
+      expect(createAttack.bind(this, new Dragon({}))).not.to.throw();
     });
 
     it('should work if a parameter object is provided', function () {

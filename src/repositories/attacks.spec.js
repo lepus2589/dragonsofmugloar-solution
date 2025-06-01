@@ -1,14 +1,18 @@
-'use strict';
+import axios from 'axios';
+import AxiosMockAdapter from 'axios-mock-adapter';
+import sinon from 'sinon';
+import esmock from 'esmock'
 
-const attacks = require('./attacks');
-const models = require('../models');
-const axios = require('axios');
-const AxiosMockAdapter = require('axios-mock-adapter');
-const sinon = require('sinon');
+describe('attacks repository: ', async function () {
+  const Attack = sinon.fake();
+  const Outcome = sinon.fake();
+  const attacks = await esmock('./attacks.js', {
+    '../models/index.js': {
+      Attack,
+      Outcome
+    }
+  });
 
-models.Attack = function () {};
-
-describe('attacks repository: ', function () {
   before(function () {
     this.axiosMock = new AxiosMockAdapter(axios);
   });
@@ -17,22 +21,15 @@ describe('attacks repository: ', function () {
     this.axiosMock.restore();
   });
 
-  beforeEach(function () {
-    this.sinon = sinon.sandbox.create();
-  });
-
   afterEach(function () {
-    this.sinon.restore();
+    Attack.resetHistory()
+    Outcome.resetHistory()
     this.axiosMock.reset();
   });
 
   describe('The attack function', function () {
     const gameId = 12345;
-    const attackModel = new models.Attack();
-
-    beforeEach(function () {
-      this.sinon.stub(models, 'Outcome').callsFake(function () {});
-    });
+    const attackModel = new Attack();
 
     it('should fail without a valid gameId', function () {
       this.axiosMock.onAny().reply(expect.fail);
@@ -57,10 +54,10 @@ describe('attacks repository: ', function () {
 
       const request = attacks.attack(gameId, attackModel);
 
-      return expect(request).to.eventually.be.an.instanceof(models.Outcome)
+      return expect(request).to.eventually.be.an.instanceof(Outcome)
         .then(function () {
-          expect(models.Outcome).to.have.been.calledWithNew;
-          expect(models.Outcome).to.have.been.calledWith(reply);
+          expect(Outcome).to.have.been.calledWithNew;
+          expect(Outcome).to.have.been.calledWith(reply);
         });
     });
 
@@ -73,7 +70,7 @@ describe('attacks repository: ', function () {
 
       return expect(request).to.eventually.be.rejected
         .then(function () {
-          expect(models.Outcome).not.to.have.been.called;
+          expect(Outcome).not.to.have.been.called;
         });
     });
   });

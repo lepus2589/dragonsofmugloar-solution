@@ -1,6 +1,4 @@
-'use strict';
-
-const models = require('.');
+import * as models from './index.js'
 
 class Attack {
   constructor(...aParameters) {
@@ -16,4 +14,4 @@ class Attack {
   }
 }
 
-module.exports.Attack = Attack;
+export {Attack};

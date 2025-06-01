@@ -1,5 +1,3 @@
-'use strict';
-
-module.exports.attacks = require('./attacks');
-module.exports.battles = require('./battles');
-module.exports.weather = require('./weather');
+export * as attacks from './attacks.js';
+export * as battles from './battles.js';
+export * as weather from './weather.js';

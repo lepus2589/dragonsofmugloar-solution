@@ -1,7 +1,5 @@
-'use strict';
-
-const axios = require('axios');
-const xml2js = require('xml2js');
+import axios from 'axios';
+import xml2js from 'xml2js';
 
 async function get(aGameId) {
   if (typeof aGameId !== 'number') {
@@ -10,7 +8,7 @@ async function get(aGameId) {
 
   const response = await axios({
     method: 'get',
-    url: 'http://www.dragonsofmugloar.com/weather/api/report/' + aGameId,
+    url: 'https://www.dragonsofmugloar.com/weather/api/report/' + aGameId,
     responseType: 'text'
   });
 
@@ -25,4 +23,4 @@ async function get(aGameId) {
   });
 }
 
-module.exports.get = get;
+export {get};

@@ -1,4 +1,2 @@
-'use strict';
-
-module.exports.OutcomeType = require('./outcometype');
-module.exports.WeatherType = require('./weathertype');
+export {OutcomeType} from './outcometype.js';
+export {WeatherType} from './weathertype.js';

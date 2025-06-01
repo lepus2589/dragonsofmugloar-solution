@@ -1,10 +1,8 @@
-'use strict';
-
-const repositories = require('./repositories');
-const models = require('./models');
-const enums = require('./enums');
-const dragonTrainingCenter = require('./dragon-training-center');
-const mugloarNews = require('./mugloar-news');
+import * as repositories from './repositories/index.js';
+import * as models from './models/index.js';
+import * as enums from './enums/index.js';
+import * as dragonTrainingCenter from './dragon-training-center.js';
+import * as mugloarNews from './mugloar-news.js';
 
 let totalNumberOfBattles = 0;
 let battlesWon = 0;

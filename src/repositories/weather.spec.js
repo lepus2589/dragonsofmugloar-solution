@@ -1,10 +1,8 @@
-'use strict';
-
-const weather = require('./weather');
-const xml2js = require('xml2js');
-const axios = require('axios');
-const AxiosMockAdapter = require('axios-mock-adapter');
-const sinon = require('sinon');
+import * as weather from './weather.js';
+import xml2js from 'xml2js';
+import axios from 'axios';
+import AxiosMockAdapter from 'axios-mock-adapter';
+import sinon from 'sinon';
 
 describe('weather repository: ', function () {
   before(function () {
@@ -15,12 +13,8 @@ describe('weather repository: ', function () {
     this.axiosMock.restore();
   });
 
-  beforeEach(function () {
-    this.sinon = sinon.sandbox.create();
-  });
-
   afterEach(function () {
-    this.sinon.restore();
+    sinon.restore();
     this.axiosMock.reset();
   });
 
@@ -30,7 +24,7 @@ describe('weather repository: ', function () {
     let parseError = null;
 
     beforeEach(function () {
-      this.sinon
+      sinon
         .stub(xml2js, 'parseString')
         .callsFake(function (aString, aOptions, aCallback) {
           aCallback(parseError, parseResult);

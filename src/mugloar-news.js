@@ -1,6 +1,4 @@
-'use strict';
-
-const enums = require('./enums');
+import * as enums from './enums/index.js';
 
 function stringifyBattle(aWeather, aBattle, aAttack, aOutcome) {
   let result = '';
@@ -58,4 +56,4 @@ function stringifyBattle(aWeather, aBattle, aAttack, aOutcome) {
   return result;
 }
 
-module.exports.stringifyBattle = stringifyBattle;
+export {stringifyBattle};

@@ -1,7 +1,5 @@
-'use strict';
-
-const enums = require('../enums');
-const {Outcome} = require('./outcome');
+import * as enums from '../enums/index.js';
+import {Outcome} from './outcome.js';
 
 describe('Outcome model: ', function () {
   describe('The valid Outcome model', function () {

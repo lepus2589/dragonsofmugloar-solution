@@ -1,5 +1,6 @@
 .*
 !.gitignore
+!.mocharc.yaml
 !.nycrc
 
 node_modules

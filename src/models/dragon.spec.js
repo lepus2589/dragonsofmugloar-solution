@@ -1,6 +1,4 @@
-'use strict';
-
-const {Dragon} = require('./dragon');
+import {Dragon} from './dragon.js';
 
 describe('Dragon model: ', function () {
   describe('The valid Dragon model', function () {

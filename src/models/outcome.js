@@ -1,6 +1,4 @@
-'use strict';
-
-const enums = require('../enums');
+import * as enums from '../enums/index.js'
 
 class Outcome {
   _isValid(aStatus, aMessage) {
@@ -30,4 +28,4 @@ class Outcome {
   }
 }
 
-module.exports.Outcome = Outcome;
+export {Outcome};

@@ -1,7 +1,5 @@
-'use strict';
-
-const models = require('./models');
-const enums = require('./enums');
+import * as models from './models/index.js';
+import * as enums from './enums/index.js';
 
 function calcDragon(aKnight) {
   const knightAbilities = [
@@ -127,4 +125,4 @@ function getDragon(aWeatherType, aKnight) {
   }
 }
 
-module.exports.getDragon = getDragon;
+export {getDragon};

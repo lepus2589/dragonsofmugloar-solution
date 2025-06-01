@@ -1,6 +1,4 @@
-'use strict';
-
-const models = require('.');
+import * as models from './index.js'
 
 class Battle {
   _isValid(aGameId, aKnight) {
@@ -28,4 +26,4 @@ class Battle {
   }
 }
 
-module.exports.Battle = Battle;
+export {Battle};

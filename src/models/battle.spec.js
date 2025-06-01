@@ -1,20 +1,25 @@
-'use strict';
+import sinon from 'sinon';
+import esmock from 'esmock'
 
-const {Battle} = require('./battle');
-const models = require('.');
+describe('Battle model: ', async function () {
+  const Knight = sinon.fake(function (aKnight) {
+    if (aKnight.invalid) {
+      throw new Error();
+    }
+  });
+  const {Battle} = await esmock('./battle.js', {
+    './index.js': { Knight }
+  });
 
-models.Knight = function (aKnight) {
-  if (aKnight.invalid) {
-    throw new Error();
-  }
-};
+  afterEach(function () {
+    Knight.resetHistory();
+  });
 
-describe('Battle model: ', function () {
   describe('The valid Battle model', function () {
     let battle;
 
     beforeEach(function () {
-      battle = new Battle(12345, new models.Knight({}));
+      battle = new Battle(12345, new Knight({}));
     });
 
     it('should have a property "gameId" of type Number', function () {
@@ -22,7 +27,7 @@ describe('Battle model: ', function () {
     });
 
     it('should have a property "knight" that is instance of Knight', function () {
-      expect(battle.knight).to.be.an.instanceof(models.Knight);
+      expect(battle.knight).to.be.an.instanceof(Knight);
     });
   });
 
@@ -32,7 +37,7 @@ describe('Battle model: ', function () {
     }
 
     it('should work if separate arguments are provided', function () {
-      expect(createBattle.bind(this, 12345, new models.Knight({}))).not.to.throw();
+      expect(createBattle.bind(this, 12345, new Knight({}))).not.to.throw();
     });
 
     it('should work if a parameter object is provided', function () {
@@ -43,7 +48,7 @@ describe('Battle model: ', function () {
     });
 
     it('should fail if "gameId" is not of type Number', function () {
-      expect(createBattle.bind(this, undefined, new models.Knight({}))).to.throw();
+      expect(createBattle.bind(this, undefined, new Knight({}))).to.throw();
       expect(createBattle.bind(this, {
         knight: {}
       })).to.throw();

@@ -1,5 +1,3 @@
-'use strict';
-
 class Dragon {
   _isValid(aScaleThickness, aClawSharpness, aWingStrength, aFireBreath) {
     return typeof aScaleThickness === 'number' &&
@@ -37,4 +35,4 @@ class Dragon {
   }
 }
 
-module.exports.Dragon = Dragon;
+export {Dragon};
